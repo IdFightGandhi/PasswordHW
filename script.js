@@ -13,21 +13,21 @@ var charArr =[];
 
 
 function generatePassword(){
-  var userPrompt = 0;
-  while (userPrompt < 8 || userPrompt > 128) {
-    var userPrompt = prompt("Choose a password length between 8 and 128 characters");
+  var passwordLength = 0;
+  while (passwordLength < 8 || passwordLength > 128) {
+    var passwordLength = prompt("Choose a password length between 8 and 128 characters");
 
-    if (userPrompt < 8 || userPrompt > 128) {
+    if (passwordLength < 8 || passwordLength > 128) {
 
-      var userPrompt = prompt("Password is too short or too long. Please choose between 8 and 128 characters");
+      var passwordLength = prompt("Password is too short or too long. Please choose between 8 and 128 characters");
 
 
-    }else if (userPrompt === "" || Number.isNaN(userPrompt)){
+    }else if (passwordLength === "" || Number.isNaN(passwordLength)){
 
-      var userPrompt = prompt("Enter a valid value");
+      var passwordLength = prompt("Enter a valid value");
 
     }
-    console.log(userPrompt)
+    console.log(passwordLength)
   }
 
   
@@ -36,16 +36,42 @@ function generatePassword(){
   var wantUc = confirm("Do you want upper case letters in your password?");
   var wantSymbol = confirm("Do you want special characters in your password?");
 
-  if (wantLc) {
+  if (wantNumbers){
 
-    for (var i =0; i )
+    for (var i = 0; i < numbers.length; i++){
+
+      charArr.push(numbers[i]);
+
+    }
+
+    }else if(wantUc){
+
+    for (var i = 0; i < wantUc.length; i++){
+
+      charArr.push(wantUc[i]);
+
+    }
+
+  }else if (wantLc){
+
+    for (var i = 0; i < wantLc.length; i++){
+
+      charArr.push(wantLc[i]);
+
+    }
+  }else if (wantSymbol){
+    for (var i =0; i < wantSymbol.length; i++){
+
+      charArr.push(wantSymbol[i]);
+
+    }
   }
 
-
+}
   
 
 
-}
+
 
 
 
