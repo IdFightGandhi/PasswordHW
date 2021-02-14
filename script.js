@@ -1,32 +1,31 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var numbers = "0123456789".split("");
-var lowerCase = "abcdefghijklmnopqrstuvwxyz".split("");
-var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-var symbols = "!@#$%^&*?=+-><(){}[]_/\~".split("");
-var charArr =[];
-
-
-
-
-
 
 
 function generatePassword(){
+  var numbers = "0123456789".split("");
+  var lowerCase = "abcdefghijklmnopqrstuvwxyz".split("");
+  var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  var symbols = "!@#$%^&*?=+-><(){}[]_/\~".split("");
+  var charArr = [];
+  var finalArr = [];
   var passwordLength = 0;
-  while (passwordLength < 8 || passwordLength > 128) {
-    var passwordLength = prompt("Choose a password length between 8 and 128 characters");
 
+  
+  var passwordLength = prompt("Choose a password length between 8 and 128 characters");
+
+  while ((passwordLength < 8 || passwordLength > 128 || passwordLength==="" || isNaN(passwordLength))) {
     if (passwordLength < 8 || passwordLength > 128) {
 
       var passwordLength = prompt("Password is too short or too long. Please choose between 8 and 128 characters");
 
-
-    }else if (passwordLength === "" || Number.isNaN(passwordLength)){
+  }
+    else if (passwordLength === "" || isNaN(passwordLength)){
 
       var passwordLength = prompt("Enter a valid value");
+      console.log("pass");
 
-    }
+  }
     console.log(passwordLength)
   }
 
@@ -43,40 +42,67 @@ function generatePassword(){
       charArr.push(numbers[i]);
 
     }
+    finalArr.push(numbers[Math.floor(Math.random() * numbers.length)]);
+    console.log("Will1");
+    console.log(finalArr.length);
 
-    }else if(wantUc){
-
-    for (var i = 0; i < wantUc.length; i++){
-
-      charArr.push(wantUc[i]);
-
-    }
-
-  }else if (wantLc){
-
-    for (var i = 0; i < wantLc.length; i++){
-
-      charArr.push(wantLc[i]);
-
-    }
-  }else if (wantSymbol){
-    for (var i =0; i < wantSymbol.length; i++){
-
-      charArr.push(wantSymbol[i]);
-
-    }
   }
 
-}
+  if(wantUc){
+
+    for (var i = 0; i < upperCase.length; i++){
+
+      charArr.push(upperCase[i]);
+
+    }
+    finalArr.push(upperCase[Math.floor(Math.random() * upperCase.length)]);
+    console.log("Will2");
+    console.log(finalArr.length);
+
+  }
+
+  if (wantLc){
+
+    for (var i = 0; i < lowerCase.length; i++){
+
+      charArr.push(lowerCase[i]);
+
+    }
+    finalArr.push(lowerCase[Math.floor(Math.random() * lowerCase.length)]);
+    console.log("Will3");
+    console.log(finalArr.length);
+  }
+
+  if (wantSymbol){
+    for (var i =0; i < symbols.length; i++){
+
+      charArr.push(symbols[i]);
+
+    }
+    finalArr.push(symbols[Math.floor(Math.random() * symbols.length)]);
+    console.log("Will4");
+    console.log(finalArr.length);
+  }
   
+console.log(charArr);
+console.log(finalArr.length);
+var modifiedPasswordLength = (passwordLength - finalArr.length);
+console.log(modifiedPasswordLength);
+
+for (var i = 0; i < modifiedPasswordLength; i++){
+
+  finalArr.push(charArr[Math.floor(Math.random() * charArr.length)]);
+  console.log(finalArr.length);
+  console.log(modifiedPasswordLength);
+
+}
+  console.log(finalArr);
+
+  return finalArr;
+
+}
 
 
-
-
-
-
-
-console.log(numbers)
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
