@@ -14,7 +14,7 @@ function generatePassword(){
   
   var passwordLength = prompt("Choose a password length between 8 and 128 characters");
 
-  while ((passwordLength < 8 || passwordLength > 128 || passwordLength==="" || isNaN(passwordLength))) {
+  while ((passwordLength < 8 || passwordLength > 128 || passwordLength === "" || isNaN(passwordLength))) {
     if (passwordLength < 8 || passwordLength > 128) {
 
       var passwordLength = prompt("Password is too short or too long. Please choose between 8 and 128 characters");
