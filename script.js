@@ -12,7 +12,7 @@ function generatePassword(){
   var passwordLength = 0;
 
   
-  var passwordLength = prompt("Choose a password length between 8 and 128 characters");
+  var passwordLength = prompt("How long would you like your password to be?(Enter a numeric value between 8 and 128)");
 
   while ((passwordLength < 8 || passwordLength > 128 || passwordLength === "" || isNaN(passwordLength))) {
     if (passwordLength < 8 || passwordLength > 128) {
@@ -21,8 +21,8 @@ function generatePassword(){
 
   }
     else if (passwordLength === "" || isNaN(passwordLength)){
-
-      var passwordLength = prompt("Enter a valid value");
+      
+      var passwordLength = prompt("Enter a numeric value between 8 and 128");
       console.log("pass");
 
   }
@@ -94,11 +94,12 @@ for (var i = 0; i < modifiedPasswordLength; i++){
   finalArr.push(charArr[Math.floor(Math.random() * charArr.length)]);
   console.log(finalArr.length);
   console.log(modifiedPasswordLength);
+  
 
 }
+  
   console.log(finalArr);
-
-  return finalArr;
+  return finalArr.join('');
 
 }
 
